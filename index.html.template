@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>{{ configuration.title }}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<h1><a href="index.html">{{ configuration.title }}</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					{{ navigation }}
+
+				<!-- Banner -->
+					<section id="banner">
+						<div class="inner">
+							<div class="logo"><span class="icon fa-gem"></span></div>
+							<h2>WELCOME!</h2>
+<!--							<p>Another free + fully responsive site template by <a href="http://html5up.net">HTML5 UP</a></p>-->
+						</div>
+					</section>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+
+						{% for post in blogs limit:3 %}
+							{%- case forloop.index -%}
+								{% when 1 %}
+									{%- assign id = "one" %}
+									{%- assign style = "style1" %}
+								{% when 2 %}
+									{%- assign id = "two" %}
+									{%- assign style = "style2" %}
+								{% when 3 %}
+									{%- assign id = "three" %}
+									{%- assign style = "style3" %}
+								{% else %}
+									{%- assign id = "four" %}
+									{%- assign style = "style1" %}
+							{%- endcase -%}
+						<section id="{{ id }}" class="wrapper spotlight {{ style }}">
+							<div class="inner">
+								<a href="#" class="image"><img src="images/pic0{{forloop.index}}.jpg" alt="" /></a>
+								<div class="content">
+									<h2 class="major">{{ post.title }}</h2>
+									<p>{{ post.short }}</p>
+									<a href="{{post.url}}" class="special">Read more</a>
+								</div>
+							</div>
+						</section>
+						{% endfor %}
+
+						<!-- Four -->
+							<section id="four" class="wrapper alt style1">
+								<div class="inner">
+									<h2 class="major">Older posts</h2>									
+									<section class="features">
+										{% for post in blogs limit:4 offset:3 %}
+											<article>
+												<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
+												<h3 class="major">{{ post.title }}</h3>
+												<p>{{ post.short }}</p>
+												<a href="{{post.url}}" class="special">Read more</a>
+											</article>
+										{% endfor %}
+									</section>
+									<ul class="actions">
+										<li><a href="./archive.html" class="button">Browse All</a></li>
+									</ul>
+								</div>
+							</section>
+
+					</section>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="inner">							
+							<ul class="copyright">
+								<li>Copyright © {{ Year }}</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
